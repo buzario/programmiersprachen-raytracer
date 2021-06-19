@@ -1,9 +1,4 @@
-
-#define _USE_MATH_DEFINES
 #include"box.hpp"
-#include<cmath>
-#include<glm/vec3.hpp>
-#include<iostream>
 
 
 Box::Box(glm::vec3 const& min, glm::vec3 const& max, std::string const& nm, Color const& clr) :

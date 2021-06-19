@@ -2,7 +2,6 @@
 #define _USE_MATH_DEFINES
 #include "sphere.hpp"
 #include <cmath>
-#include<glm/vec3.hpp>
 
 Sphere::Sphere(glm::vec3 const& ctr, float r, std::string const& nm, Color const& clr) :
 	Shape{ nm, clr },
