@@ -99,6 +99,20 @@ TEST_CASE("Box & Sphere constructor", "[constructors]") {
     }
 }
 
+TEST_CASE("operator<< for Shape", "[operator<<]") {
+    std::shared_ptr<Shape> s = std::make_shared<Sphere>(glm::vec3{ 3.0f, -2.0f, 1.5f }, 4.3f);
+    std::cout << (*s) << std::endl;
+
+    s = std::make_shared<Sphere>(glm::vec3{ 3.0f, -2.0f, 1.5f }, 4.3f, "Sphere2", Color{ 0.2f, 0.4f, 0.2f });
+    std::cout << (*s) << std::endl;
+
+    s = std::make_shared<Box>(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 23.0f, 3.0f, 10.45f });
+    std::cout << (*s) << std::endl;
+
+    s = std::make_shared<Box>(glm::vec3{ 0.0f, 0.0f, 0.0f }, glm::vec3{ 23.0f, 3.0f, 10.45f },
+        "Box2", Color{ 0.4f, 0.6f, 0.2f });
+    std::cout << (*s) << std::endl;
+}
 
 int main(int argc, char *argv[])
 {
