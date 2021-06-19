@@ -3,12 +3,11 @@
 #include "sphere.hpp"
 #include <cmath>
 #include<glm/vec3.hpp>
-#include<iostream>
 
-
-Sphere::Sphere(glm::vec3 const& ctr, float r) :
-  center_{ctr},
-  radius_{r} {}
+Sphere::Sphere(glm::vec3 const& ctr, float r, std::string const& nm, Color const& clr) :
+	Shape{ nm, clr },
+	center_{ctr},
+	radius_{r} {}
 
 float Sphere::area() const { return 4.0f * M_PI * pow(radius_, 2); }
 

@@ -1,14 +1,15 @@
 
 #define _USE_MATH_DEFINES
-#include "box.hpp"
-#include <cmath>
+#include"box.hpp"
+#include<cmath>
 #include<glm/vec3.hpp>
 #include<iostream>
 
 
-Box::Box(glm::vec3 const& min, glm::vec3 const& max) :
-  min_{ min },
-  max_{ max } {}
+Box::Box(glm::vec3 const& min, glm::vec3 const& max, std::string const& nm, Color const& clr) :
+	Shape{nm, clr},
+	min_{ min },
+	max_{ max } {}
 
 float Box::area() const {
 	auto x = abs(max_.x - min_.x);
