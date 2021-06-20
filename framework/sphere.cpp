@@ -18,3 +18,22 @@ std::ostream& Sphere::print(std::ostream& os) const {
 	os << "Radius: " << radius_ << "\n";
 	return os;
 }
+
+HitPoint Sphere::intersect(Ray const& ray) {
+	
+	auto norm_direction = glm::normalize(ray.direction);
+	float distance;
+	auto boo = glm::intersectRaySphere(
+		ray.origin, norm_direction,
+		center_, radius_ * radius_, distance);
+	HitPoint hp;
+	if (boo) {
+		hp.hit = true;
+		hp.distance = distance;
+		hp.name = name_;
+		hp.color = color_;
+		hp.position = ray.origin + (ray.direction * distance);
+		hp.direction = norm_direction;
+	}
+	return hp;
+}
