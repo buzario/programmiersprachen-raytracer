@@ -13,6 +13,7 @@ public:
 		std::string const& nm = "Box", Color const& clr = {0.5f, 0.5f, 0.5f});
 	float area() const override;
 	float volume() const override;
+	std::ostream& print(std::ostream& os) const override;
 
 private:
 	glm::vec3 min_ = { 0.0f, 0.0f, 0.0f };
