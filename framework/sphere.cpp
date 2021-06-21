@@ -28,11 +28,12 @@ HitPoint Sphere::intersect(Ray const& ray) {
 		center_, radius_ * radius_, distance);
 	HitPoint hp;
 	if (boo) {
+		std::cout << distance << std::endl;
 		hp.hit = true;
 		hp.distance = distance;
 		hp.name = name_;
 		hp.color = color_;
-		hp.position = ray.origin + (ray.direction * distance);
+		hp.position = ray.origin + (norm_direction * distance);
 		hp.direction = norm_direction;
 	}
 	return hp;
