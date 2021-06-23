@@ -8,6 +8,8 @@ class Shape
 public:
 	Shape() = default;
 	Shape(std::string const& nm, Color const& clr);
+	virtual ~Shape();
+	//~Shape();		// uncomment for Task 5.8
 	virtual float area() const = 0;
 	virtual float volume() const = 0;
 	virtual std::ostream& print(std::ostream& os) const;

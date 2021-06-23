@@ -14,6 +14,7 @@ public:
 	Sphere() = default;
 	Sphere(glm::vec3 const& ctr, float r,
 		std::string const& nm = "Sphere", Color const& clr = {0.5f, 0.5f, 0.5f});
+	~Sphere() /*override*/;
 	float area() const override;
 	float volume() const override;
 	std::ostream& print(std::ostream& os) const override;

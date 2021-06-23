@@ -4,7 +4,15 @@
 Box::Box(glm::vec3 const& min, glm::vec3 const& max, std::string const& nm, Color const& clr) :
 	Shape{nm, clr},
 	min_{ min },
-	max_{ max } {}
+	max_{ max } {
+	// uncomment for Task 5.8
+	//std::cout << "Box Konstruktor\n";
+}
+
+Box::~Box() {
+	// uncomment for Task 5.8
+	//std::cout << "Destruktor Box \n";
+}
 
 float Box::area() const {
 	auto x = abs(max_.x - min_.x);

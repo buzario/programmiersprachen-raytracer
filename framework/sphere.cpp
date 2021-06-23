@@ -6,7 +6,15 @@
 Sphere::Sphere(glm::vec3 const& ctr, float r, std::string const& nm, Color const& clr) :
 	Shape{ nm, clr },
 	center_{ctr},
-	radius_{r} {}
+	radius_{r} {
+	// uncomment for Task 5.8
+	//std::cout << "Sphere Konstruktor\n";
+}
+
+Sphere::~Sphere() {
+	// uncomment for Task 5.8
+	//std::cout << "Sphere Destruktor\n";
+}
 
 float Sphere::area() const { return 4.0f * M_PI * pow(radius_, 2); }
 
@@ -28,7 +36,6 @@ HitPoint Sphere::intersect(Ray const& ray) {
 		center_, radius_ * radius_, distance);
 	HitPoint hp;
 	if (boo) {
-		std::cout << distance << std::endl;
 		hp.hit = true;
 		hp.distance = distance;
 		hp.name = name_;

@@ -4,7 +4,15 @@
 
 Shape::Shape(std::string const& nm, Color const& clr) :
 	name_{nm},
-	color_{clr} {}
+	color_{clr} {
+	// uncomment for Task 5.8
+	//std::cout << "Shape Konstruktor\n";
+}
+
+Shape::~Shape() {
+	// uncomment for Task 5.8
+	//std::cout << "Shape Destruktor\n";
+}
 
 std::ostream& Shape::print(std::ostream& os) const {
 	os << "Name: " << name_ << "\n";

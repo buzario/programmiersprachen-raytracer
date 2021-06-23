@@ -11,6 +11,7 @@ public:
 	Box() = default;
 	Box(glm::vec3 const& min, glm::vec3 const& max,
 		std::string const& nm = "Box", Color const& clr = {0.5f, 0.5f, 0.5f});
+	~Box() /*override*/;
 	float area() const override;
 	float volume() const override;
 	std::ostream& print(std::ostream& os) const override;
