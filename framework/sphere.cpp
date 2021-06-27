@@ -3,6 +3,11 @@
 #include "sphere.hpp"
 #include <cmath>
 
+Sphere::Sphere(glm::vec3 const& ctr, float r) :
+	Shape{},
+	center_{ctr},
+	radius_{r} {}
+
 Sphere::Sphere(glm::vec3 const& ctr, float r, std::string const& nm, Color const& clr) :
 	Shape{ nm, clr },
 	center_{ctr},

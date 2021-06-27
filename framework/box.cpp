@@ -1,8 +1,14 @@
 #include"box.hpp"
 
 
-Box::Box(glm::vec3 const& min, glm::vec3 const& max, std::string const& nm, Color const& clr) :
-	Shape{nm, clr},
+Box::Box(glm::vec3 const& min, glm::vec3 const& max) :
+	Shape{},
+	min_{min},
+	max_{max} {}
+
+Box::Box(glm::vec3 const& min, glm::vec3 const& max,
+	std::string const& nm, Color const& clr) :
+	Shape{ nm, clr },
 	min_{ min },
 	max_{ max } {
 	// uncomment for Task 5.8
