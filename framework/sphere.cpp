@@ -4,7 +4,7 @@
 #include <cmath>
 
 Sphere::Sphere(glm::vec3 const& ctr, float r) :
-	Shape{},
+	Shape{ "Sphere", Color {0.5f, 0.5f, 0.5f} },
 	center_{ctr},
 	radius_{r} {}
 
@@ -36,11 +36,11 @@ HitPoint Sphere::intersect(Ray const& ray) {
 	
 	auto norm_direction = glm::normalize(ray.direction);
 	float distance;
-	auto boo = glm::intersectRaySphere(
+	auto hit = glm::intersectRaySphere(
 		ray.origin, norm_direction,
 		center_, radius_ * radius_, distance);
 	HitPoint hp;
-	if (boo) {
+	if (hit) {
 		hp.hit = true;
 		hp.distance = distance;
 		hp.name = name_;

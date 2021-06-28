@@ -15,7 +15,7 @@ public:
 	Sphere(glm::vec3 const& ctr, float r);
 	Sphere(glm::vec3 const& ctr, float r,
 		std::string const& nm, Color const& clr);
-	~Sphere() /*override*/;
+	~Sphere() /* override */;
 	float area() const override;
 	float volume() const override;
 	std::ostream& print(std::ostream& os) const override;
@@ -23,7 +23,7 @@ public:
 
 private:
 	glm::vec3 center_ = {0.0f, 0.0f, 0.0f};
-	float radius_ = {1.0f};
+	float radius_ = 1.0f;
 };
 
 #endif // define SPHERE_HPP

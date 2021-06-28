@@ -2,7 +2,7 @@
 
 
 Box::Box(glm::vec3 const& min, glm::vec3 const& max) :
-	Shape{},
+	Shape{ "Box", Color {0.5f, 0.5f, 0.5f} },
 	min_{min},
 	max_{max} {}
 
@@ -17,13 +17,13 @@ Box::Box(glm::vec3 const& min, glm::vec3 const& max,
 
 Box::~Box() {
 	// uncomment for Task 5.8
-	//std::cout << "Destruktor Box \n";
+	//std::cout << "Box Destruktor\n";
 }
 
 float Box::area() const {
-	auto x = abs(max_.x - min_.x);
-	auto y = abs(max_.y - min_.y);
-	auto z = abs(max_.z - min_.z);
+	auto x = max_.x - min_.x;
+	auto y = max_.y - min_.y;
+	auto z = max_.z - min_.z;
 	
 	// checking if object is 2D  
 	if (x == 0.0f || y == 0.0f || z == 0.0f) {
