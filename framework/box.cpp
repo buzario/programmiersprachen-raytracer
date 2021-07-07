@@ -1,14 +1,15 @@
 #include"box.hpp"
 
-
+/*
 Box::Box(glm::vec3 const& min, glm::vec3 const& max) :
-	Shape{ "Box", Color {0.5f, 0.5f, 0.5f} },
+	Shape{ "Box", std::make_shared<Material>() },
 	min_{min},
 	max_{max} {}
+*/
 
 Box::Box(glm::vec3 const& min, glm::vec3 const& max,
-	std::string const& nm, Color const& clr) :
-	Shape{ nm, clr },
+	std::string const& nm, std::shared_ptr<Material> const& mat) :
+	Shape{ nm, mat },
 	min_{ min },
 	max_{ max } {
 	// uncomment for Task 5.8
@@ -34,6 +35,12 @@ float Box::area() const {
 
 float Box::volume() const { 
 	return (max_.x - min_.x) * (max_.y - min_.y) * (max_.z - min_.z); }
+
+
+HitPoint Box::intersect(Ray const& ray) const {
+	return HitPoint{};
+}
+
 
 std::ostream& Box::print(std::ostream& os) const {
 	Shape::print(os);

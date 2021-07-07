@@ -2,14 +2,15 @@
 #define _USE_MATH_DEFINES
 #include "sphere.hpp"
 #include <cmath>
-
+/*
 Sphere::Sphere(glm::vec3 const& ctr, float r) :
-	Shape{ "Sphere", Color {0.5f, 0.5f, 0.5f} },
+	Shape{ "Sphere", std::make_shared<Material>() },
 	center_{ctr},
 	radius_{r} {}
+*/
 
-Sphere::Sphere(glm::vec3 const& ctr, float r, std::string const& nm, Color const& clr) :
-	Shape{ nm, clr },
+Sphere::Sphere(glm::vec3 const& ctr, float r, std::string const& nm, std::shared_ptr<Material> const& mat) :
+	Shape{ nm, mat },
 	center_{ctr},
 	radius_{r} {
 	// uncomment for Task 5.8
@@ -32,7 +33,7 @@ std::ostream& Sphere::print(std::ostream& os) const {
 	return os;
 }
 
-HitPoint Sphere::intersect(Ray const& ray) {
+HitPoint Sphere::intersect(Ray const& ray) const {
 	
 	auto norm_direction = glm::normalize(ray.direction);
 	float distance;
@@ -44,7 +45,7 @@ HitPoint Sphere::intersect(Ray const& ray) {
 		hp.hit = true;
 		hp.distance = distance;
 		hp.name = name_;
-		hp.color = color_;
+		hp.color = material_->ka;  // provisional
 		hp.position = ray.origin + (norm_direction * distance);
 		hp.direction = norm_direction;
 	}

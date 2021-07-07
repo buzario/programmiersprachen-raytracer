@@ -2,9 +2,9 @@
 #include "shape.hpp"
 
 
-Shape::Shape(std::string const& nm, Color const& clr) :
+Shape::Shape(std::string const& nm, std::shared_ptr<Material> const& mat) :
 	name_{nm},
-	color_{clr} {
+	material_{mat} {
 	// uncomment for Task 5.8
 	//std::cout << "Shape Konstruktor\n";
 }
@@ -16,7 +16,7 @@ Shape::~Shape() {
 
 std::ostream& Shape::print(std::ostream& os) const {
 	os << "Name: " << name_ << "\n";
-	os << "Color: (" << color_.r << ", " << color_.g << ", " << color_.b << ")\n";
+	os << "Material: (" << material_ << ")\n";
 	return os;
 }
 

@@ -9,12 +9,13 @@ class Box : public Shape
 public:
 	
 	Box() = default;
-	Box(glm::vec3 const& min, glm::vec3 const& max);
+	//Box(glm::vec3 const& min, glm::vec3 const& max);
 	Box(glm::vec3 const& min, glm::vec3 const& max,
-		std::string const& nm, Color const& clr);
+		std::string const& nm, std::shared_ptr<Material> const& mat);
 	~Box() /* override */;
 	float area() const override;
 	float volume() const override;
+	HitPoint intersect(Ray const& ray) const override;
 	std::ostream& print(std::ostream& os) const override;
 
 private:
