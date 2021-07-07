@@ -15,7 +15,7 @@ public:
 	//~Shape();		// uncomment for Task 5.8
 	virtual float area() const = 0;
 	virtual float volume() const = 0;
-	virtual HitPoint intersect(Ray const& ray) const = 0; // float& t wofür?
+	virtual HitPoint intersect(Ray const& ray, float& t) const = 0; // float& t wofür?
 	virtual std::ostream& print(std::ostream& os) const;
 protected:
 	std::string name_ = "Shape";

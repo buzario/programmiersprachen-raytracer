@@ -37,8 +37,37 @@ float Box::volume() const {
 	return (max_.x - min_.x) * (max_.y - min_.y) * (max_.z - min_.z); }
 
 
-HitPoint Box::intersect(Ray const& ray) const {
-	return HitPoint{};
+HitPoint Box::intersect(Ray const& ray, float& t) const {
+	HitPoint hp;
+	bool hit = false;
+	auto norm_direction = glm::normalize(ray.direction);
+	t = (min_.x - ray.origin.x) / norm_direction.x;
+	auto intersect_test = ray.origin + t * norm_direction;
+
+	if (min_.y <= intersect_test.y && intersect_test.y <= max_.y) {
+		if (min_.z <= intersect_test.z && intersect_test.z <= max_.z) {
+			hit = true;
+		}
+	}
+
+	if (hit) {
+		std::vector<float> coord_vec{
+			min_.y, ray.origin.y, norm_direction.y,
+			min_.z, ray.origin.z, norm_direction.z,
+			max_.x, ray.origin.x, norm_direction.x,
+			max_.y, ray.origin.y, norm_direction.y,
+			max_.z, ray.origin.z, norm_direction.z,
+		};
+		for (auto i = 0; i < coord_vec.size(); i + 3) {
+			float alt_t = (coord_vec[i] - coord_vec[i + 1]) / norm_direction[i + 2];
+			if (alt_t > 0 && alt_t < t) {
+				t = alt_t;
+			}
+		}
+		auto position = ray.origin + (norm_direction * t);
+		hp = { true, t, name_, material_->ka, position, norm_direction };
+	}
+	return hp;
 }
 
 

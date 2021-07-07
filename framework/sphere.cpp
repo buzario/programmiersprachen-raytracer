@@ -33,20 +33,19 @@ std::ostream& Sphere::print(std::ostream& os) const {
 	return os;
 }
 
-HitPoint Sphere::intersect(Ray const& ray) const {
+HitPoint Sphere::intersect(Ray const& ray, float& t) const {
 	
 	auto norm_direction = glm::normalize(ray.direction);
-	float distance;
 	auto hit = glm::intersectRaySphere(
 		ray.origin, norm_direction,
-		center_, radius_ * radius_, distance);
+		center_, radius_ * radius_, t);
 	HitPoint hp;
 	if (hit) {
 		hp.hit = true;
-		hp.distance = distance;
+		hp.distance = t;
 		hp.name = name_;
 		hp.color = material_->ka;  // provisional
-		hp.position = ray.origin + (norm_direction * distance);
+		hp.position = ray.origin + (norm_direction * t);
 		hp.direction = norm_direction;
 	}
 	return hp;
